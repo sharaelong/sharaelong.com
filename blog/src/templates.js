@@ -108,7 +108,7 @@ export function postLayout(_site, resource, content) {
     }
     for (let codeEl of contentDocument.querySelectorAll("pre code")) {
         hljs.highlightElement(codeEl);
-        codeEl.classList.add("text-sm", "px-4", "py-3", "lg:-mx-4", "rounded-xl");
+        codeEl.classList.add("hljs", "text-sm", "px-4", "py-3", "lg:-mx-4", "rounded-xl");
     }
     for (let headingEl of contentDocument.querySelectorAll("h1, h2, h3, h4, h5, h6")) {
         let headingSize = Number.parseInt(headingEl.tagName.substring(1)) - 1;

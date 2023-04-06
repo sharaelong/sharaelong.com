@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.14.25",
-    "miniflare": "^2.3.0"
+    "miniflare": "^2.13.0"
   },
   "browser": {
     "punycode": "punycode"
