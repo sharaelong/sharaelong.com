@@ -27,4 +27,4 @@ For `$p < 0.5$`, the values are symmetric to the cases when `$p > 0.5$` and can 
 
 However, this approximation lacks a theoretical basis. The area under the probability density function (PDF) of the normal distribution, derived from the Taylor expansion of a function using terms up to the second order, resembles a function of the form `$Ax + Bx^3 + Cx^5$`, whereas my formula is related to a quadratic polynomial. The inherent anomaly is connected to this issue.
 
-I sincerely hope that someone discovers a more accurate approximation that shares a similar level of calculation complexity as this method. If you have, I'm happy to get in contact and discuss it further!
+I'm interested if there are any approximations with a similar complexity that is more accurate. If you have, please let me know. Thanks.
