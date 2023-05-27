@@ -306,6 +306,15 @@ export function postLayout(_site, resource, content) {
         <div>${html}</div>
       </article>
     </main>
+    <footer class="sticky top-[100vh] bg-white border-2 border-t-indigo-700">
+      <nav class="h-16 mx-auto w-11/12 lg:max-w-3xl flex gap-4 items-center">
+        <span class="text-slate-400">
+          Design from: <a href="https://goranmoomin.dev">@goranmoomin</a>
+          <br>
+          Contact: <a href="mailto:sharaelong.shin@gmail.com">sharaelong.shin@gmail.com</a>
+        </span>
+      </nav>
+    </footer>
   </body>
 </html>
 `;
