@@ -22,7 +22,7 @@ Cooley-Tukey algorithm은 `$n=ab$`로 분할될 때 크기가 `$a$`, `$b$`인 �
 대략의 mental model은, 길이 `$n$` 정도의 배열에서 값의 update를 적당한 위치에서 반복하는 것이다.  
 전체 다항식의 길이 `$n$`에 대한 root of unity `$\omega$`에 대해, `$\,f(\omega^{k}), \,f(\omega^{k+\frac{n}{2}})$`의 값을 계산하는데는 `$\,f_{even}(\omega^{2k}), \,f_{odd}(\omega^{2k})$`의 값만 필요하다. 따라서 `$\,f_{even}$`과 `$\,f_{odd}$`의 FFT 결과값이 배열 상에서 인접한 위치에 쓰여있었다면 `$\frac{n}{2}$`칸씩 떨어진 값을 pair로 보고 값을 갱신한다. 이렇게 되면 Divide의 결과값의 위치와 Conquer 이후 결과값이 위치해야 할 곳이 정확히 맞물림을 알 수 있다. 자세히 말하면 Conquer 이후의 결과는 Divide의 결과값으로 가정했던 point-value가 연속한 위치에 있어야 한다는 조건을 만족한다는 의미이다.
 
-![FFT-visualization](/static/FFT-visualization.png)
+![](/static/FFT-visualization.png)
 
 이렇게 되면 초기화를 해야한다. 길이가 1일 때는 coefficient의 값이 곧 바로 point-value와 같으나, 그림의 가장 하단을 보면 coefficient의 순서가 전체적으로는 0, 1, 2, ... 순으로 위치하지 않았다. 따라서 저 순열을 어떻게 만들 수 있는지 확인해야 하는데, 각각의 값을 bit로 표현하고 이를 뒤집어보자. 신기하게도 그 값이 0부터 1씩 증가하는 형태이다. 
 
