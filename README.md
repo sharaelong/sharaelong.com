@@ -55,3 +55,14 @@ To crop image,
 convert original.jpg -crop 640x620+0+0 cropped.jpg
 ```
 Syntax: width x height + originX + originY
+
+To resize image,
+```bash
+convert original.jpg -resize 50% cropped.jpg
+```
+
+
+# List of non-intuitive features
+1. To emphasize just partial word, use <strong> tag directly. I inserted lt;gt; replacing mechanism.
+2. Every image will be inserted in p tag which has align="center" attribute.
+3. Any string inserted in the alt text of markdown syntax will be a caption of the corresponding image.

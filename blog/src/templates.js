@@ -129,6 +129,8 @@ export function postLayout(_site, resource, content) {
     }
     for (let paragraphEl of contentDocument.querySelectorAll("p")) {
         paragraphEl.classList.add("my-2");
+        paragraphEl.innerHTML = paragraphEl.innerHTML.replace(/&lt;strong&gt;/g, "<strong>");
+        paragraphEl.innerHTML = paragraphEl.innerHTML.replace(/&lt;\/strong&gt;/g, "</strong>");
     }
     for (let blockquoteEl of contentDocument.querySelectorAll("blockquote")) {
         blockquoteEl.classList.add("pl-4", "my-4", "border-l-4", "border-l-indigo-700");
@@ -137,7 +139,43 @@ export function postLayout(_site, resource, content) {
         anchorEl.classList.add("text-indigo-700", "underline", "decoration-2", "underline-offset-4");
     }
     for (let imageEl of contentDocument.querySelectorAll("img")) {
-        imageEl.classList.add("my-4");
+        // Create a new <img> element
+        let newImageEl = contentDocument.createElement("img");
+        // Copy the src attribute from the original image
+        newImageEl.setAttribute("src", imageEl.getAttribute("src"));
+        newImageEl.classList.add("my-4");
+        
+        // Create a new <p> element
+        let paragraphEl = contentDocument.createElement("p");
+        // Set the align attribute to "center"
+        paragraphEl.setAttribute("align", "center");
+
+        // Append the original <img> element to the <p> element
+        paragraphEl.appendChild(newImageEl);
+
+        // Create a new <figure> element
+        let figureEl = contentDocument.createElement("figure");
+
+        // Append the <p> element to the <figure> element
+        figureEl.appendChild(paragraphEl);
+
+        // Create a new <figcaption> element
+        let figcaptionEl = contentDocument.createElement("figcaption");
+        // Set the align attribute to "center"
+        figcaptionEl.setAttribute("align", "center");
+        // Set the caption text as the alt attribute of the image
+        figcaptionEl.textContent = imageEl.getAttribute("alt");
+        figcaptionEl.classList.add("text-gray-400");
+
+        // Append the <figcaption> element to the <figure> element
+        figureEl.appendChild(figcaptionEl);
+
+        // Replace the original image with the <figure> element
+        imageEl.parentNode.replaceChild(figureEl, imageEl);
+
+        // Set the margin to figure element
+        figureEl.style.marginTop = "24px";
+        figureEl.style.marginBottom = "24px";
     }
 
     let html = contentDocument.body.innerHTML;
