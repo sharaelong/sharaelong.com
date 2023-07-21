@@ -386,3 +386,18 @@ export function atomFeedLayout(site, _resource, _content) {
 </feed>`
     .trim();
 }
+
+export function sitemapLayout(site, _resource, _content) {
+  return String.raw`
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${site.posts.map(post => String.raw`
+    <url>
+      <loc>https://sharaelong.com${post.relativeURL}</loc>
+      <lastmod>${new Date(post.data.date).toISOString()}</lastmod>
+    </url>
+  `).join('')}
+</urlset>
+</feed>`
+    .trim();
+}

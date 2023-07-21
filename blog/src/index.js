@@ -2,7 +2,7 @@ import { Router } from 'itty-router';
 import MarkdownIt from 'markdown-it';
 import parseFrontMatter from 'front-matter';
 
-import { indexLayout, postLayout, atomFeedLayout } from './templates';
+import { indexLayout, postLayout, atomFeedLayout, sitemapLayout } from './templates';
 
 // import hljs from "highlight.js";
 
@@ -47,6 +47,17 @@ router.get('/feed.atom', async () => {
         posts
     };
     return new Response(atomFeedLayout(site), {
+        headers: { 'Content-Type': 'application/atom+xml' }
+    });
+});
+
+router.get('/sitemap.xml', async () => {
+    let { keys } = await POSTS.list();
+    let posts = await Promise.all(keys.map(async key => postFromRaw(key.name, await POSTS.get(key.name))));
+    let site = {
+        posts
+    };
+    return new Response(sitemapLayout(site), {
         headers: { 'Content-Type': 'application/atom+xml' }
     });
 });
