@@ -25,6 +25,13 @@ router.get('/', async () => {
     // FIXME: not listing more than 1000 posts
     let { keys } = await POSTS.list();
     let posts = await Promise.all(keys.map(async key => postFromRaw(key.name, await POSTS.get(key.name))));
+    posts.sort((a, b) => {
+        let dateA = new Date(a.data.date);
+        let dateB = new Date(b.data.date);
+        if (dateA < dateB) return 1;
+        else if (dateA > dateB) return -1;
+        else return 0;
+    });
     let site = {
         posts
     };
