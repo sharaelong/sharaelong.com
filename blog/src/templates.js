@@ -397,7 +397,6 @@ export function sitemapLayout(site, _resource, _content) {
       <lastmod>${new Date(post.data.date).toISOString()}</lastmod>
     </url>
   `).join('')}
-</urlset>
-</feed>`
+</urlset>`
     .trim();
 }
