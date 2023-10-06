@@ -127,11 +127,11 @@ export function postLayout(_site, resource, content) {
         let listType = listEl.tagName.toLowerCase();
         listEl.classList.add({ ul: "list-disc", ol: "list-decimal" }[listType], "list-inside");
     }
+
     for (let paragraphEl of contentDocument.querySelectorAll("p")) {
         paragraphEl.classList.add("my-2");
-        paragraphEl.innerHTML = paragraphEl.innerHTML.replace(/&lt;strong&gt;/g, "<strong>");
-        paragraphEl.innerHTML = paragraphEl.innerHTML.replace(/&lt;\/strong&gt;/g, "</strong>");
     }
+
     for (let blockquoteEl of contentDocument.querySelectorAll("blockquote")) {
         blockquoteEl.classList.add("pl-4", "my-4", "border-l-4", "border-l-indigo-700");
     }

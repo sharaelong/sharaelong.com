@@ -63,6 +63,6 @@ convert original.jpg -resize 50% cropped.jpg
 
 
 # List of non-intuitive features
-1. To emphasize just partial word, use <strong> tag directly. I inserted lt;gt; replacing mechanism.
-2. Every image will be inserted in p tag which has align="center" attribute.
-3. Any string inserted in the alt text of markdown syntax will be a caption of the corresponding image.
+1. Every image will be inserted in p tag which has align="center" attribute.
+2. Any string inserted in the alt text of markdown syntax will be a caption of the corresponding image.
+3. HTML option of markdown-it parser is enabled.

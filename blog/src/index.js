@@ -8,7 +8,9 @@ import { indexLayout, postLayout, atomFeedLayout, sitemapLayout } from './templa
 
 let router = Router();
 
-let md = new MarkdownIt();
+let md = new MarkdownIt({
+    html: true
+});
 
 function postFromRaw(name, rawPost) {
     let { attributes, body } = parseFrontMatter(rawPost);
