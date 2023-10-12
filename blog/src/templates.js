@@ -44,7 +44,7 @@ export function indexLayout(site, _resource, _content) {
   <body class="min-h-screen">
     <header class="sticky top-0 z-10 bg-white border-2 border-b-indigo-700">
       <nav class="h-16 mx-auto w-11/12 lg:max-w-3xl flex gap-4 items-center">
-        <span class="text-2xl font-bold"><a href="/">scribble</a></span>
+        <span class="text-2xl font-bold"><a href="/">sharaelong's blog</a></span>
 <!--
         <a class="align-middle font-bold text-indigo-700" href="/">All Posts</a>
         <a class="align-middle font-bold text-indigo-700" href="https://twitter.com/sharaelong" target="_blank" rel="noopener">
