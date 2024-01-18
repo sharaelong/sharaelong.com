@@ -76,7 +76,7 @@ router.get('/static/:slug', async request => {
 
 router.get('/favicon.ico', () => new Response('Not Found', { status: 404 }));
 
-router.get('/:slug', async request => {
+router.get('/posts/:slug', async request => {
     let rawPost = await POSTS.get(request.params.slug);
     if (rawPost === null) {
         return new Response('Not Found', { status: 404 });

@@ -62,7 +62,7 @@ export function indexLayout(site, _resource, _content) {
         <ul class="flex flex-col">
           ${site.posts.map(post => String.raw`
           <li>
-            <a class="hover:text-indigo-800" href="${post.relativeURL}">
+            <a class="hover:text-indigo-800" href="posts${post.relativeURL}">
               <h2 class="mt-6 mb-2 text-2xl underline decoration-2 decoration-indigo-700 underline-offset-6">${post.data.title}</h2>
               <p>${post.summary}</p>
             </a>
@@ -187,6 +187,7 @@ export function postLayout(_site, resource, content) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>@sharaelong&#x27;s Blog</title>
+    <link rel="canonical" href="https://sharaelong.com/posts${resource.relativeURL}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;700&amp;family=IBM+Plex+Sans+KR:wght@400;700&amp;display=swap">
@@ -376,7 +377,7 @@ export function atomFeedLayout(site, _resource, _content) {
   <entry>
     <content type="html">${encodeXML(post.content).trim()}</content>
     <id>https://sharaelong.dev${post.relativeURL}</id>
-    <link rel="alternate" href="https://sharaelong.com${post.relativeURL}"/>
+    <link rel="alternate" href="https://sharaelong.com/posts${post.relativeURL}"/>
     <published>${new Date(post.data.date).toISOString()}</published>
     <summary>${encodeXML(post.summary)}</summary>
     <title>${encodeXML(post.data.title)}</title>
@@ -393,7 +394,7 @@ export function sitemapLayout(site, _resource, _content) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${site.posts.map(post => String.raw`
     <url>
-      <loc>https://sharaelong.com${post.relativeURL}</loc>
+      <loc>https://sharaelong.com/posts${post.relativeURL}</loc>
       <lastmod>${new Date(post.data.date).toISOString()}</lastmod>
     </url>
   `).join('')}
