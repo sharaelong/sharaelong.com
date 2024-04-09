@@ -9,7 +9,7 @@ Gold I 문제들 중에서도 Greedy 문제들에 대한 풀이/증명을 전부
 2. Proof-by-AC를 좀 줄여보고자 하며,
 3. 직관력을 기르는 데 도움이 될 것 같음
 
-정도의 이유가 있다. 모든 종류의 피드백은 밑의 메일 주소나 discord DM으로 받을 예정.
+정도의 이유가 있다. 그리고 증명은 최대한 motivation을 담아서 만드는 걸 목표로 한다. Greedy 문제들의 고질적인 특징인 것 같기도 한데, 답을 찾았으면 증명은 '어떻게든' 만들 수 있기 때문에, ugly한 증명이 튀어나오기 십상이기 때문. 모든 종류의 피드백은 밑의 메일 주소나 discord DM으로 받는다.
 
 [[BOJ 10310] Most](https://boj.kr/10310)
 <details>
@@ -67,4 +67,24 @@ return E'
 <summary>Trivia</summary>
 
 Undirected weighted graph $G$가 주어졌을 때, subgraph $H$ 위에서의 거리가 $G$ 위에서의 거리를 $t$-approximate할 때 $H$를 $G$의 $t$-spanner라고 부른다. 그러므로 $H$의 edge size를 최대한 줄일 수 있다면, 이는 곧 그래프 위의 metric을 효율적으로 표현할 수 있다는 뜻이다. $k \geq 2$인 integer $k$에 대해, $O(n^{1+1/k})$의 edge size를 갖는 $(2k-1)$-spanner가 존재함이 알려져 있고, 이것이 Erdos girth conjecture가 성립할 때 optimal임도 알려져 있다. [이 논문](https://www.researchgate.net/publication/220452641_On_Sparse_Spanners_of_Weighted_Graphs)이 그러한 $t$-spanner를 찾는 방법을 알려주는데, 실제로 $E'$을 구하는 위의 코드는 이 논문에서 제시된 $t=1$일 때의 $t$-spanner를 구하는 방법이기도 하다. Optimality에 관해서는 [이거](https://www.cs.jhu.edu/~baruch/teaching/600.427/Papers/oracle-STOC-try.pdf)를 참조해봐도 좋겠다.
+</details>
+
+[[BOJ 28976] Кольцевые дороги](https://boj.kr/28976)
+<details>
+<summary>Solution</summary>
+문제의 notation을 따라, 어떤 쿼리의 각을 $(a, b)$로 두자. 이 때 최적해의 후보가 될 수 있는 도로는 $b$의 바로 오른쪽 혹은 바로 왼쪽 도로 2개뿐임을 보이면 된다. 즘명은 매우 간단한데, 내가 바깥쪽 반지름 $r_2$에서 이동하는 각을 $\theta$만큼 아낄 수 있다면 안쪽 반지름 $r_1 < r_2$에서 이동할 각은 길어져야 $\theta$뿐이기 때문이다.
+</details>
+
+[[BOJ 11458] The Fox and the Owl](https://boj.kr/11458)
+<details>
+<summary>Solution</summary>
+문제를 처음 봤을 때 접근할 만한 방식으로 증명을 써 보겠다. $S(x)$를 $x \geq 0$에 대해 $x$의 $10$진법 표현의 자릿수 합으로 정의하자. 또한 $|x|$를 10진법 표현에서의 자릿수라고 하자.
+
+먼저 입력이 양이 아닌 정수 $-n$ $(n \geq 0)$이라고 하자. 이 경우 문제를 다시 쓰면 $n < m$이고 $S(m) = S(n)+1$인 최소의 $m$을 찾는 문제가 된다. $n = \overline{ab99\dots9}$ ($b$는 $9$가 아닌 단일 자릿수를 의미) 그러면 $m = \overline{a(b+1)99\dots9}$가 답이 되는데, 증명은... 이게 충분한 설명일지는 모르겠으나, 가능한 답의 후보를 순서대로 $n+1$, $n+2$, $\dots$처럼 생각했을 때 이 $m$값이 이전에 나오는 수들은 자릿수의 합이 $S(n)+1$일리가 없기 때문이다. 여기서 사용한 notation은 모든 자릿수가 $9$일 때 약간 애매해지는데, $b=0$으로 두고 생각하면 된다. 즉 입력이 $-99$라면 답은 $-199$라는 의미.
+
+이제 입력이 양의 정수일 때가 핵심이다. 먼저 답이 음수가 되지 않는 입력만을 생각해보자. 입력 $n$과 답 $m$에 대해 $0 < m < n$이므로, 이들은 항상 $n = \overline{abc}$, $m = \overline{ab'c'}$과 같이 표현된다. $b$와 $b'$은 단일 자릿수이고 $b'<b$를 만족하며, 편의 상 $|n|=|m|$이되 $m$은 leading zero를 가질 수도 있다고 하자. 만약 $0 \leq b' \leq b-2$인 $m$이 조건을 만족한다면, $b' = b-1$로 두고 $c'$에서 적절히 $0$이 아닌 자릿수들을 감소시키는 작업이 항상 가능하므로 ($S(c') \geq S(c)+2 \geq 0$이기 때문), 최대인 $m$은 항상 $b' = b-1$을 만족한다.
+
+그러므로 $m > 0$이라면 $S(c') = S(c)+2$인데, 따라서 $S(c) \leq 9|c|-2$여야 한다. 우리는 $b$의 위치를 최대한 뒤쪽(least sig)으로 가져가기를 원하므로, $n$을 least significant digit부터 읽어가면서 $S(c) \geq 9|c|-2$가 되는 최소의 $|c|$를 알아냈다고 하자 (존재한다고 치자). 이제 $|c|+1$번째 least significant digit부터 볼 때 $0$이 아닌 최초의 자릿수가 $b$가 될 수 있는 최적의 위치이고, $m = \overline{ab'c'}$에서 $b'=b-1$의 위치와 자릿수까지 결정되었다면 $|c'|$개의 남은 자릿수에 $S(c')=S(c)+2$ 조건을 만족시키는 것은 greedy하게 큰 자릿수를 $9$로 먼저 채워나가는 방식으로 해결 가능.
+
+이 방법의 예외는 다음 두 가지이다: $n = 799$여서 최소의 $|c| = |n|$인 경우나, 아니면 $n = 989$ 같은 수여서 $S(c) \leq 9|c|-2$인 $|c|$가 존재하지 않는 경우이다. 이 경우는 맨 처음에 했던 가정, $m > 0$이라는 조건이 깨지는 경우이다. 그러므로 답이 $-m$ $(m \geq 0)$이라고 두면, 이제는 $n$과 $m$의 대소 관계 없이 $S(m) = S(n)+1$인 최소의 $m$을 찾는 문제가 된다. 이건 방금 전에 $c'$을 구성하는 greedy와 상황이 완전히 똑같으므로, 증명 끝.
 </details>
