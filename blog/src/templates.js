@@ -40,6 +40,15 @@ export function indexLayout(site, _resource, _content) {
         plugins: []
       };
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNV1RQTYJT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BNV1RQTYJT');
+    </script>
   </head>
   <body class="min-h-screen">
     <header class="sticky top-0 z-10 bg-white border-2 border-b-indigo-700">
@@ -223,6 +232,15 @@ export function postLayout(_site, resource, content) {
         variants: {},
         plugins: []
       };
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BNV1RQTYJT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BNV1RQTYJT');
     </script>
     <style>
       pre code.hljs {

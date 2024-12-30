@@ -19,11 +19,12 @@
     "linkedom": "^0.14.4",
     "markdown-it": "^12.3.2",
     "markdown-it-mathjax3": "^4.3.2",
-    "punycode": "^2.1.1"
+    "punycode": "^2.1.1",
+    "wrangler": "^3.99.0"
   },
   "devDependencies": {
     "esbuild": "^0.14.25",
-    "miniflare": "^2.13.0"
+    "miniflare": "^2.14.4"
   },
   "browser": {
     "punycode": "punycode"
