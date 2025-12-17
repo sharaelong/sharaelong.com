@@ -1,6 +1,6 @@
 ---
 title: '[DJMAX Respect V] 아르케아 유입의 VL4 출시 기념 뉴탭 갈리기 전 연말 성과 결산'
-summary: ''
+summary: '4B Trendsetter IV를 달성했다.'
 date: 2025-12-16T20:00:00+09:00
 ---
 
