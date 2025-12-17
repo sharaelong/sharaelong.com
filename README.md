@@ -23,22 +23,22 @@ node populate.js
 4. To upload posts to production KV storage,
 ```bash
 for p in posts/*.md;
-do 
-    npx wrangler kv:key put --binding=POSTS "$(basename -s .md "$p")" --path "$p";
+do
+    npx wrangler kv key put --binding=POSTS "$(basename -s .md "$p")" --path "$p" --remote;
 done
 ```
 or individually,
 ```bash
-npx wrangler kv:key put --binding=STATIC FFT-visualization.png --path static/FFT-visualization.png
+npx wrangler kv key put --binding=STATIC FFT-visualization.png --path static/FFT-visualization.png
 ```
 
-To make new KV storage namespaces,
+To make new KV storage namespaces (maybe outdated),
 ```bash
 npx wrangler kv:namespace create POSTS
 npx wrangler kv:namespace list # verify
 ```
 
-5. To publish changes,
+5. To publish changes (maybe outdated),
 ```bash
 npx wrangler publish
 ```
